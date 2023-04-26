@@ -3,8 +3,8 @@ package com.example.systemdesigns.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,23 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.systemdesigns.models.Department;
 import com.example.systemdesigns.models.DoublyLinkedList;
-import com.example.systemdesigns.models.DoublyLinkedList.Node;
 import com.example.systemdesigns.models.Employee;
 import com.example.systemdesigns.models.LRUCacheLinkedHashMap;
+import com.example.systemdesigns.models.DoublyLinkedList.Node;
 
 @RestController
-@RequestMapping("/system/design")
-public class SystemDesignController {
+@RequestMapping("/system/design/lrucache")
+public class LRUCacheController {
 	private final LRUCacheLinkedHashMap<Employee, Department> cache = LRUCacheLinkedHashMap.newInstance(4);
 
-	@PostMapping("/lrucache/nonlinkedhashmap")
+	@PostMapping("/nonlinkedhashmap")
 	public void designLRUCacheNonLinkedHashMap() {
 		DoublyLinkedList dLList = new DoublyLinkedList();
 		Node firstNode = dLList.buildDoublyLinkedList(new int[] {4,6,3,8,5});
 		dLList.printNodes(firstNode);
 	}
 	
-	@PostMapping("/lrucache/linkedhashmap/{empId}/{depId}")
+	@PostMapping("/linkedhashmap/{empId}/{depId}")
 	public @ResponseBody Map<String,List<String>> designLRUCacheLinkedHashMap(@PathVariable Integer empId, @PathVariable Integer depId) {
 		return addToLRUCache(empId, depId);
 	}
