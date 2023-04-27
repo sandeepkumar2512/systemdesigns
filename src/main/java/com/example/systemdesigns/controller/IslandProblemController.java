@@ -40,10 +40,10 @@ public class IslandProblemController {
 		}
 		boolean isVisited = true;
 		visited[i][j]=true;
-		processNodes(i, j-1, landscape,visited);//right
-		processNodes(i, j+1, landscape,visited);//left
-		processNodes(i+1, j, landscape,visited);//up
-		processNodes(i-1, j, landscape,visited);//down
+		processNodes(i, j-1, landscape,visited);//right - mark visited if 1
+		processNodes(i, j+1, landscape,visited);//left - mark visited if 1
+		processNodes(i+1, j, landscape,visited);//up - mark visited if 1
+		processNodes(i-1, j, landscape,visited);//down - mark visited if 1
 		return isVisited;
 	}
 	
